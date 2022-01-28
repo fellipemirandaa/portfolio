@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fellipe Dev</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" 
+    rel="stylesheet">
+    <style> 
+        * {
+            box-sizing: content-box; 
+
+        }
+        body {
+            margin: 0;
+            font-family: 'Oswald', sans-serif;
+        }
+        .bg {
+            background-image:url('../imagens/teste1.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 2023px;
+            height: 854px;
+            position: fixed;
+            padding: 0;
+            margin: 0;
+            opacity: 0.6; /*1.0 = totalmente opaco, 0.0 = totalmente transparente*/
+        }
+        .main {
+            font-size: 3.3em;
+            color: rgb(17, 35, 49);
+            margin: 20px;
+        }
+        .cabecalho {
+            background-color: rgb(43, 102, 150);
+            border-bottom: solid 5px rgb(32, 57, 78);
+            height: 80px;
+            box-sizing: content-box;
+            /*position: fixed; /* fixar o menu mesmo quando tem a barra de rolagem, porém 
+            esta deixando o JS sem funcionar e está ficando opaco */ 
+            top: 0; /* Deixa a barra de navegação no topo da página*/
+            width: 100%; /* Faz com que a barra de navegação acompanhe a imagem de fundo até o final */
+            overflow: hidden;
+        }
+        .cabecalho a {
+            float: left; /* Faz com que o logo 2 não seja o cabeçalho inteiro */
+            display: block;
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            font-size: 1.3em;
+            padding: 2px 16px;
+            text-align: left;
+        }
+        .cabecalho a:hover, 
+        .cabecalho a.selected {
+            background-color: rgb(141, 187, 218);
+            color: rgb(32, 57, 78);
+        }
+        .logo {
+            display: inline-block; /* Precisa desse para aparecer o menu lateral*/
+            height: 85px;
+            padding: 5px;
+        }
+        .logo img {
+            height: 55px;
+        }
+        .logo a {
+            vertical-align: top;
+            height: 40px;
+            padding: 25px;
+            display: inline-block; /* Precisa desse para aparecer os itens no menu*/
+        }
+        .logo2 {
+            height: 0;
+            top: 0;
+            display: inline-block;
+        }
+        /* Menu Sidepanel */
+        .sidepanel {
+            height: 250px; 
+            width: 0; /* para mexer neste, tem que ser com o JavaScript */
+            position: fixed;
+            z-index: 1; /* para se sobrepor */
+            top: 0;
+            right: 0px;
+            background-color: rgb(32, 57, 78); 
+            overflow-x: hidden; /* desabilitar e habilitar o menu*/
+            padding-top: 60px;
+            transition: 0.5s; /* Quanto tempo dura para aparecer o Menu lateral */
+        }
+/* Os links que aparecem no menu sidepanel */
+        .sidepanel a {
+            padding: 8px 8px 8px 38px;
+            text-decoration: none;
+            font-size: 23px;
+            color: rgb(255, 255, 255);
+            display: block; /* Diz como que os itens dentro do painel ficarão alinhados */
+            transition: 0.3s;
+        }
+/* Quando passa o mouse por cima de cada item do menu fica de outra cor */
+        .sidepanel a:hover {
+            color: rgb(32, 57, 78);
+        }
+/* Posição do "x" no menu lateral */
+        .sidepanel .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+/* Estilo do botão usado para abrir o painel lateral */
+        .openbtn {
+            font-size: 40px;
+            cursor: pointer; /* modelo do cursor */
+            background-color: rgb(43, 102, 150);
+            color: rgb(32, 57, 78);
+            padding: 10px 25px; /* tamanho do botão*/
+            border: none;
+            float: right; /* Faz o botão ficar no lado direito*/
+        }
+        .openbtn:hover {
+            background-color: rgb(43, 102, 150);
+        }
+        @media(min-width: 953px) {
+            .sidepanel {
+                display: none
+            }
+        }
+        @media(max-width: 954px) {
+            .logo {
+                display: none;
+            }
+        }
+        @media(min-width: 954px) {
+            .openbtn {
+                display: none;
+            }
+        }     
+    </style>
+</head>
+
+<body>
+    <header class="cabecalho">
+        <div class="logo">
+            <a href="../index.html">
+                <img src="../imagens/logo1.png" alt="Logo" /></a>
+            <a href="../index.html" >Início</a> <!--Colocando aqui os itens ficam corretos no Menu-->
+            <a href="../compra.html" target= "_blank">Compra</a>
+            <a href="../venda.html" target= "_blank">Venda</a>
+            <a href="../locacao.html" target= "_blank">Locação</a>
+            <a href="../contato.html">Contato</a>
+        </div>
+        <div id="mySidepanel" class="sidepanel">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="../index.html">Início</a>
+            <a href="../compra.html" target= "_blank">Compra</a>
+            <a href="../venda.html" target= "_blank">Venda</a>
+            <a href="../locacao.html" target= "_blank">Locação</a>
+            <a href="../contato.html">Contato</a>
+        </div>
+        <button class="openbtn" onclick="openNav()">&#9776;</button> <!--Precisa ser antes do logo 2
+             para poder aparecer-->
+        <div class="logo2">
+            <a href="../index.html">
+                <img src="../imagens/logo1.png" alt="Logo 2" /></a>
+        </div>
+    </header>
+    <script>
+       
+        function openNav() {
+            document.getElementById("mySidepanel").style.width = "200px"; /* aumenta ou diminui 
+            o tamanho da barra do painel lateral */
+        }
+        function closeNav() {
+            document.getElementById("mySidepanel").style.width = "0"; /* faz com que o painel lateral 
+            desapareça quando fechar no "x" */
+        }
+    </script>
+    <div class='bg'>
+            <div class='bg'>
+            </div>
+    </div>
+      <div class="main"> <!--Colocando o conteúdo aqui, ele consegue sobrepor a imagem-->
+        <p>Corretor de Imóveis</p>
+      </div>
+</body>
+
+</html>

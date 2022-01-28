@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venda</title>
+    <style>
+        body {
+            background: rgb(115, 164, 204);
+        }
+        p {
+            font-size: 1.3em;
+        }
+        button{
+            border-radius: 20px;
+        }
+        .btninserir {
+            background-color: wheat;
+            width: 80px;
+            height: 30px;
+        }
+        .btnvoltar {
+            background-color: slategrey;
+            width: 110px;
+            height: 30px;
+        }
+        h1 {
+            background-color: rgb(43, 102, 150);
+            border-bottom: solid 5px rgb(32, 57, 78);
+            color: rgb(10, 24, 34);
+            text-align: center;
+            vertical-align: center;
+            font-size: 3.3em;
+            height: 60px;
+            box-sizing: content-box;
+            /*position: fixed; /* fixar o menu mesmo quando tem a barra de rolagem, porém 
+            esta deixando o JS sem funcionar e está ficando opaco */ 
+            top: 0; /* Deixa a barra de navegação no topo da página*/
+            width: 100%; /* Faz com que a barra de navegação acompanhe a imagem de fundo até o final */
+            padding: 0;
+            margin: 0;
+        }
+        h2 {
+            font-size: 2.3em;
+        }
+        .fonte{
+            font-size: 1.27em;            
+        }
+    </style>
+</head>
+<body>
+    <h1>Venda seu Imóvel</h1>
+    <p>Neste site você poderá se <b class="fonte">cadastrar</b> para que um corretor entre em 
+        contato e faça a captção do seu imóvel para colocarmos a venda em nosso site.</p>
+        <h2>Cadastro</h2>
+
+    <form action="http://localhost:8081/Cliente">
+        <p><b>Nome</b></p>
+        <input type="text" name="nome"><br>
+        <p><b>Telefone</b></p>
+        <input type="number" telefone= "numero"><br>
+        <p><b>Email</b></p>
+        <input type="text" email= "email"><br><br>
+        <button class="btninserir">Inserir</button>
+    </form><br><br><br>
+    <button class="btnvoltar">
+        <a href="../index.html">Voltar Início</a>
+    </button>
+</body>
+</html>
